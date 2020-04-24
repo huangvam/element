@@ -24,20 +24,22 @@
 			<dv-border-box-7>
 				<div class="title_2">咕咕</div>
 				<el-form style="padding:0 10%;" class="login">
-					<el-form-item label="账号：">
+					<el-form-item label="账号：" >
 						<el-input size="small"
-							v-model="input"
+							v-model="user"
 							placeholder=""
+              auto-complete="off"
 						></el-input>
 					</el-form-item>
           <el-form-item label="密码：">
 						<el-input size="small"
-							v-model="input"
+							v-model="pass"
+              type="password"
 							placeholder=""
 						></el-input>
 					</el-form-item>
 				</el-form>
-        <dv-decoration-9 :color="['rgba(233,233,216,0.8)', 'rgba(233,233,216,0.8)']" class="login_button" style="width:150px;height:80px;color:#fff;font-weight: 600;margin:20% auto">登录</dv-decoration-9>
+        <dv-decoration-9 :color="['rgba(233,233,216,0.8)', 'rgba(233,233,216,0.8)']" class="login_button" style="width:150px;height:80px;color:#fff;font-weight: 600;margin:20% auto;cursor:pointer">登录</dv-decoration-9>
 			</dv-border-box-7>
 		</div>
 	</dv-full-screen-container>
@@ -46,9 +48,13 @@
 	export default {
 		data() {
 			return {
-        input:''
+        user:'',
+        pass:'',
 			}
-		},
+    },
+    mounted(){
+      this.input = this.$store.state.name
+    }
 	}
 </script>
 <style lang="scss" scoped>
@@ -79,7 +85,11 @@
     .el-input__inner{
       background: Transparent;
       border: 1px solid #5a5a5a;
+      color:#fff
     }
+  }
+  .el-form-item /deep/ .el-form-item__label{
+    color:#fff
   }
   .login_button{
 

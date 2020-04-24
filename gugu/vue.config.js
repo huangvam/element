@@ -1,6 +1,6 @@
 const path = require('path');
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
@@ -17,5 +17,25 @@ module.exports = {
       .set('src', resolve('src'))
       .set('common', resolve('src/common'))
       .set('components', resolve('src/components'));
+  },
+  pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        win: {
+          icon: './public/Start_icon.ico'
+        },
+        mac: {
+          icon: './public/Start_icon.ico'
+        },
+        productName: '咕咕',
+        "nsis": {
+          "oneClick": false,
+          "allowToChangeInstallationDirectory": true,
+          "perMachine": true,
+          "installerIcon": "./public/Start_icon.ico",
+          "installerHeaderIcon": "./public/Start_icon.ico",
+        }
+      }
+    }
   }
 };
